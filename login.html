@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - Portal Berita lapas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -72,7 +73,7 @@
                                 onclick="togglePassword()"
                                 class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                             >
-                                <span id="eyeIcon">👁️</span>
+                                <span id="eyeIcon"><i class="fa-solid fa-eye-slash"></i></span>
                             </button>
                         </div>
                     </div>
@@ -117,10 +118,10 @@
             
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                eyeIcon.textContent = '👁️‍🗨️';
+                eyeIcon.innerHTML = '<i class="fa-solid fa-eye"></i>';
             } else {
                 passwordInput.type = 'password';
-                eyeIcon.textContent = '👁️';
+                eyeIcon.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
             }
         }
 
