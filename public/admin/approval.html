@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval Berita - Portal Berita lapas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+            <div class="p-6 border-b border-blue-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">DK</span>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">Admin Panel</h2>
+                        <p class="text-xs text-blue-200">lapas Bandung</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>📊</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>📰</span>
+                            <span>Kelola Berita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="approval.html" class="flex items-center space-x-3 px-4 py-3 bg-blue-700 rounded-lg font-medium">
+                            <span>✅</span>
+                            <span>Approval Berita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>👥</span>
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
+                    <li class="pt-4 mt-4 border-t border-blue-700">
+                        <a href="../index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
+                            <span>🚪</span>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="flex items-center justify-between px-8 py-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">Approval Berita</h1>
+                        <p class="text-sm text-gray-500 mt-1">Kelola berita yang menunggu review sebelum dipublish</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="p-8">
+                <!-- Workflow Indicator -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <div class="flex items-center justify-center">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
+                                    1
+                                </div>
+                                <span class="text-xs text-gray-600 mt-2">Draft</span>
+                            </div>
+                            <div class="w-16 h-1 bg-blue-600"></div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+                                    2
+                                </div>
+                                <span class="text-xs text-blue-600 font-medium mt-2">Review</span>
+                            </div>
+                            <div class="w-16 h-1 bg-gray-300"></div>
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center text-white font-bold">
+                                    3
+                                </div>
+                                <span class="text-xs text-gray-600 mt-2">Publish</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Filter -->
+                <div class="bg-white rounded-lg shadow mb-6">
+                    <div class="border-b border-gray-200">
+                        <nav class="flex">
+                            <button class="px-6 py-4 text-sm font-medium border-b-2 border-blue-600 text-blue-600">
+                                Menunggu Review <span class="ml-2 px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs">3</span>
+                            </button>
+                            <button class="px-6 py-4 text-sm font-medium text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-gray-300">
+                                Revisi <span class="ml-2 px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">2</span>
+                            </button>
+                            <button class="px-6 py-4 text-sm font-medium text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-gray-300">
+                                Published <span class="ml-2 px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">5</span>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Judul</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penulis</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Pembukaan Pendaftaran Program Magang Digital</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Pengumuman</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Siti Nurhaliza</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">16 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <button onclick="showDetailModal('Pembukaan Pendaftaran Program Magang Digital')" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Lihat Detail</button>
+                                            <button onclick="approveNews('Pembukaan Pendaftaran')" class="text-green-600 hover:text-green-800 text-sm font-medium">Approve</button>
+                                            <button onclick="showRevisionModal('Pembukaan Pendaftaran')" class="text-orange-600 hover:text-orange-800 text-sm font-medium">Minta Revisi</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Workshop Transformasi Digital untuk ASN</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Kegiatan</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Andi Wijaya</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">15 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <button onclick="showDetailModal('Workshop Transformasi Digital untuk ASN')" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Lihat Detail</button>
+                                            <button onclick="approveNews('Workshop Transformasi')" class="text-green-600 hover:text-green-800 text-sm font-medium">Approve</button>
+                                            <button onclick="showRevisionModal('Workshop Transformasi')" class="text-orange-600 hover:text-orange-800 text-sm font-medium">Minta Revisi</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Program Beasiswa Mahasiswa Berprestasi 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Pengumuman</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Budi Santoso</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">17 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="flex items-center space-x-2">
+                                            <button onclick="showDetailModal('Program Beasiswa Mahasiswa Berprestasi 2025')" class="text-blue-600 hover:text-blue-800 text-sm font-medium">Lihat Detail</button>
+                                            <button onclick="approveNews('Program Beasiswa')" class="text-green-600 hover:text-green-800 text-sm font-medium">Approve</button>
+                                            <button onclick="showRevisionModal('Program Beasiswa')" class="text-orange-600 hover:text-orange-800 text-sm font-medium">Minta Revisi</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="px-6 py-4 border-t border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <div class="text-sm text-gray-600">
+                                Menampilkan 1 - 3 dari 3 berita
+                            </div>
+                            <div class="flex space-x-2">
+                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed">Previous</button>
+                                <button class="px-4 py-2 rounded bg-blue-600 text-white font-medium">1</button>
+                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Detail Berita -->
+    <div id="detailModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-3xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">Detail Berita</h3>
+                <button onclick="closeDetailModal()" class="text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Judul Berita</label>
+                    <p id="detailTitle" class="text-gray-800 font-medium">Pembukaan Pendaftaran Program Magang Digital</p>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Slug URL</label>
+                    <p class="text-gray-600 text-sm">pembukaan-pendaftaran-program-magang-digital</p>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Meta Description (SEO)</label>
+                    <p class="text-gray-600 text-sm">Pemerintah Daerah membuka pendaftaran program magang digital untuk mahasiswa dan fresh graduate. Dapatkan pengalaman kerja di bidang teknologi informasi.</p>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
+                    <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-400">Preview Gambar Cover</span>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Konten Berita (Preview)</label>
+                    <div class="bg-gray-50 p-4 rounded-lg text-sm text-gray-700">
+                        <p class="mb-3">Pemerintah Daerah lapas Bandung dengan bangga mengumumkan pembukaan pendaftaran Program Magang Digital 2025. Program ini ditujukan untuk mahasiswa dan fresh graduate yang ingin mendapatkan pengalaman kerja di bidang teknologi informasi dan transformasi digital.</p>
+                        <p>Peserta akan mendapatkan kesempatan untuk bekerja langsung dengan tim IT pemerintah daerah dalam berbagai proyek digitalisasi layanan publik...</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                        <p class="text-gray-600">Pengumuman</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Penulis</label>
+                        <p class="text-gray-600">Siti Nurhaliza</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end space-x-3 mt-8">
+                <button onclick="closeDetailModal()" class="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Tutup</button>
+                <button onclick="approveFromDetail()" class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">Approve & Publish</button>
+                <button onclick="revisionFromDetail()" class="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Minta Revisi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Minta Revisi -->
+    <div id="revisionModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-lg w-full mx-4">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Minta Revisi</h3>
+            <p class="text-sm text-gray-600 mb-4">Berita: "<span id="revisionTitle" class="font-medium"></span>"</p>
+            
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-gray-700 mb-2">Catatan Revisi</label>
+                <textarea id="revisionNotes" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent" placeholder="Tuliskan catatan revisi untuk penulis..."></textarea>
+            </div>
+            
+            <div class="flex justify-end space-x-3">
+                <button onclick="closeRevisionModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Batal</button>
+                <button onclick="submitRevision()" class="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">Kirim Revisi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showDetailModal(title) {
+            document.getElementById('detailTitle').textContent = title;
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        function showRevisionModal(title) {
+            document.getElementById('revisionTitle').textContent = title;
+            document.getElementById('revisionModal').classList.remove('hidden');
+        }
+
+        function closeRevisionModal() {
+            document.getElementById('revisionModal').classList.add('hidden');
+            document.getElementById('revisionNotes').value = '';
+        }
+
+        function approveNews(title) {
+            if(confirm('Approve dan publish berita "' + title + '"?')) {
+                alert('Berita berhasil di-approve dan dipublish!');
+            }
+        }
+
+        function approveFromDetail() {
+            closeDetailModal();
+            alert('Berita berhasil di-approve dan dipublish!');
+        }
+
+        function revisionFromDetail() {
+            closeDetailModal();
+            showRevisionModal(document.getElementById('detailTitle').textContent);
+        }
+
+        function submitRevision() {
+            const notes = document.getElementById('revisionNotes').value;
+            if(!notes.trim()) {
+                alert('Mohon isi catatan revisi terlebih dahulu!');
+                return;
+            }
+            alert('Permintaan revisi berhasil dikirim ke penulis!');
+            closeRevisionModal();
+        }
+    </script>
+</body>
+</html>

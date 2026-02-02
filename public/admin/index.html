@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Portal Berita lapas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+            <div class="p-6 border-b border-blue-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">DK</span>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">Admin Panel</h2>
+                        <p class="text-xs text-blue-200">lapas Bandung</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="index.html" class="flex items-center space-x-3 px-4 py-3 bg-blue-700 rounded-lg font-medium">
+                            <span>📊</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>📰</span>
+                            <span>Kelola Berita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="approval.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>✅</span>
+                            <span>Approval Berita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>👥</span>
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
+                    <li class="pt-4 mt-4 border-t border-blue-700">
+                        <a href="../index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
+                            <span>🚪</span>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="flex items-center justify-between px-8 py-4">
+                    <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-600">Selamat datang, <strong>Admin</strong></span>
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            A
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="p-8">
+                <!-- Statistics Cards -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-600">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">Total Berita</p>
+                                <h3 class="text-3xl font-bold text-gray-800">127</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
+                                📰
+                            </div>
+                        </div>
+                        <p class="text-xs text-green-600 mt-3">↑ 12% dari bulan lalu</p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg shadow p-6 border-l-4 border-gray-400">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">Draft</p>
+                                <h3 class="text-3xl font-bold text-gray-800">8</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl">
+                                📝
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-3">Menunggu ditulis</p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg shadow p-6 border-l-4 border-yellow-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">Waiting Review</p>
+                                <h3 class="text-3xl font-bold text-gray-800">5</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-2xl">
+                                ⏳
+                            </div>
+                        </div>
+                        <p class="text-xs text-yellow-600 mt-3">Perlu direview segera</p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-gray-600 mb-1">Published</p>
+                                <h3 class="text-3xl font-bold text-gray-800">114</h3>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-2xl">
+                                ✅
+                            </div>
+                        </div>
+                        <p class="text-xs text-green-600 mt-3">Berita aktif</p>
+                    </div>
+                </div>
+
+                <!-- Berita Terbaru yang Perlu Review -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-xl font-bold text-gray-800">Berita yang Perlu Direview</h2>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Judul</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Pembukaan Pendaftaran Program Magang Digital</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Pengumuman</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Siti Nurhaliza</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">16 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Workshop Transformasi Digital untuk ASN</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Kegiatan</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Andi Wijaya</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">15 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Pemeliharaan Server: 18-19 Desember 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Pengumuman</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Budi Santoso</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">14 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Integrasi Sistem Perizinan dengan OSS</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Pemerintahan</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Rini Damayanti</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">14 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm font-medium text-gray-800">Pelatihan Digital Marketing untuk Pelaku UMKM</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="text-sm text-gray-600">Kegiatan</span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span class="inline-flex px-3 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
+                                            Review
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">Agus Setiawan</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <div class="text-sm text-gray-600">13 Des 2025</div>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

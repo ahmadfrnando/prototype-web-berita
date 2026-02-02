@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Berita - Portal Berita lapas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+            <div class="p-6 border-b border-blue-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">DK</span>
+                    </div>
+                    <div>
+                        <h2 class="font-bold">Admin Panel</h2>
+                        <p class="text-xs text-blue-200">lapas Bandung</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="p-4">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>📊</span>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news.html" class="flex items-center space-x-3 px-4 py-3 bg-blue-700 rounded-lg font-medium">
+                            <span>📰</span>
+                            <span>Kelola Berita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="approval.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>✅</span>
+                            <span>Approval Berita</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                            <span>👥</span>
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
+                    <li class="pt-4 mt-4 border-t border-blue-700">
+                        <a href="../index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
+                            <span>🚪</span>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm sticky top-0 z-10">
+                <div class="flex items-center justify-between px-8 py-4">
+                    <div>
+                        <a href="create-news.html" class="text-blue-600 hover:text-blue-800 text-sm">← Kembali</a>
+                        <h1 class="text-2xl font-bold text-gray-800 mt-1">Tambah Berita Baru</h1>
+                    </div>
+                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                        A
+                    </div>
+                </div>
+            </header>
+
+            <!-- Form Content -->
+            <main class="p-8">
+                <form onsubmit="handleSubmit(event)" class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg shadow p-8 space-y-6">
+                        <!-- Judul Berita -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Judul Berita <span class="text-red-500">*</span></label>
+                            <input 
+                                type="text" 
+                                id="judulBerita"
+                                placeholder="Masukkan judul berita..."
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            >
+                        </div>
+
+                        <!-- Slug -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Slug (URL) <span class="text-red-500">*</span></label>
+                            <input 
+                                type="text" 
+                                id="slug"
+                                placeholder="peluncuran-aplikasi-layanan-publik"
+                                required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-gray-50"
+                            >
+                            <p class="text-xs text-gray-500 mt-1">Slug akan otomatis dibuat dari judul. Anda dapat mengubahnya jika diperlukan.</p>
+                        </div>
+
+                        <!-- Kategori & Tag -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Kategori <span class="text-red-500">*</span></label>
+                                <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Pilih Kategori</option>
+                                    <option>Pemerintahan</option>
+                                    <option>Kegiatan</option>
+                                    <option>Pengumuman</option>
+                                    <option>Layanan</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Tag</label>
+                                <input 
+                                    type="text" 
+                                    placeholder="smart city, digital, layanan online"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                >
+                                <p class="text-xs text-gray-500 mt-1">Pisahkan tag dengan koma</p>
+                            </div>
+                        </div>
+
+                        <!-- Upload Gambar -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload Gambar Cover <span class="text-red-500">*</span></label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition cursor-pointer">
+                                <input type="file" id="imageUpload" accept="image/*" class="hidden" onchange="previewImage(event)">
+                                <label for="imageUpload" class="cursor-pointer">
+                                    <div id="uploadPlaceholder">
+                                        <div class="text-6xl mb-3">📷</div>
+                                        <p class="text-gray-600 font-medium mb-1">Klik untuk upload gambar</p>
+                                        <p class="text-sm text-gray-500">PNG, JPG, JPEG (max 2MB)</p>
+                                    </div>
+                                    <div id="imagePreview" class="hidden">
+                                        <img id="previewImg" class="max-h-64 mx-auto rounded-lg" alt="Preview">
+                                        <button type="button" onclick="removeImage()" class="mt-3 text-red-600 hover:text-red-800 text-sm">Hapus Gambar</button>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Meta Description (SEO) -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ringkasan / Meta Description (SEO)</label>
+                            <textarea 
+                                rows="3"
+                                placeholder="Ringkasan singkat berita untuk SEO dan preview sosial media..."
+                                maxlength="160"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            ></textarea>
+                            <p class="text-xs text-gray-500 mt-1">Maksimal 160 karakter</p>
+                        </div>
+
+                        <!-- Konten Berita -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Konten Berita <span class="text-red-500">*</span></label>
+                            <textarea 
+                                id="kontenBerita"
+                                rows="15"
+                                required
+                                placeholder="Tulis konten berita di sini..."
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+                            ></textarea>
+                            <p class="text-xs text-gray-500 mt-1">Editor sederhana. Untuk produksi, gunakan rich text editor seperti CKEditor atau TinyMCE.</p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex items-center justify-end space-x-4 pt-6 border-t">
+                            <a href="news.html" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium">
+                                Batal
+                            </a>
+                            <button 
+                                type="button"
+                                onclick="saveDraft()"
+                                class="px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition font-medium"
+                            >
+                                💾 Simpan Draft
+                            </button>
+                            <button 
+                                type="submit"
+                                class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                            >
+                                ✅ Submit untuk Review
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <!-- Toast Notification (Hidden by default) -->
+    <div id="toast" class="hidden fixed top-6 right-6 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50">
+        <div class="flex items-center space-x-3">
+            <span class="text-2xl">✓</span>
+            <div>
+                <p class="font-medium" id="toastTitle">Berhasil!</p>
+                <p class="text-sm" id="toastMessage">Berita berhasil disimpan</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-generate slug from title
+        document.getElementById('judulBerita').addEventListener('input', function(e) {
+            const title = e.target.value;
+            const slug = title
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .trim();
+            document.getElementById('slug').value = slug;
+        });
+
+        // Image preview
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('uploadPlaceholder').classList.add('hidden');
+                    document.getElementById('imagePreview').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function removeImage() {
+            document.getElementById('imageUpload').value = '';
+            document.getElementById('uploadPlaceholder').classList.remove('hidden');
+            document.getElementById('imagePreview').classList.add('hidden');
+        }
+
+        // Save draft
+        function saveDraft() {
+            showToast('Draft Disimpan', 'Berita berhasil disimpan sebagai draft');
+            setTimeout(() => {
+                window.location.href = 'news.html';
+            }, 1500);
+        }
+
+        // Submit form
+        function handleSubmit(event) {
+            event.preventDefault();
+            showToast('Berhasil!', 'Berita berhasil disubmit untuk review');
+            setTimeout(() => {
+                window.location.href = 'news.html';
+            }, 1500);
+        }
+
+        // Show toast notification
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

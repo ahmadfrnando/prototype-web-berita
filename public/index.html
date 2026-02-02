@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Berita - Lembaga Permasyarakatan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-[#1e3a8a] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">DK</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Lembaga Permasyarakatan </h1>
+                        <p class="text-sm text-blue-200">Kota Medan</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="hover:text-blue-200 font-medium border-b-2 border-white pb-1">Beranda</a>
+                    <a href="news.html" class="hover:text-blue-200 font-medium">Berita</a>
+                    <a href="#profil" class="hover:text-blue-200 font-medium">Profil</a>
+                    <a href="#kontak" class="hover:text-blue-200 font-medium">Kontak</a>
+                    <a href="login.html" class="bg-white text-[#1e3a8a] px-4 py-2 rounded hover:bg-blue-50 font-medium">Login Admin</a>
+                </nav>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#1e4a9a] border-t border-blue-700">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Beranda</a>
+                <a href="news.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Berita</a>
+                <a href="#profil" class="block py-2 hover:bg-blue-700 px-3 rounded">Profil</a>
+                <a href="#kontak" class="block py-2 hover:bg-blue-700 px-3 rounded">Kontak</a>
+                <a href="login.html" class="block py-2 bg-white text-[#1e3a8a] px-3 rounded font-medium">Login Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-[#1e3a8a] via-[#2563eb] to-[#1e40af] text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Portal Berita Resmi</h2>
+                <p class="text-xl text-blue-100 mb-8">Lembaga Permasyarakatan</p>
+                <p class="text-lg text-blue-200">Informasi terkini seputar kegiatan, layanan, dan pengumuman resmi dari pemerintah Kota Medan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita Utama -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Berita Utama</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="Berita Utama" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-red-600 text-white text-xs px-3 py-1 rounded-full mb-3">HEADLINE</span>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3 hover:text-blue-600">Peluncuran Aplikasi Layanan Publik Terintegrasi Kota Medan</h3>
+                        <p class="text-gray-600 mb-4">WaliKota Medan meresmikan aplikasi layanan publik digital yang mengintegrasikan 27 jenis layanan dalam satu platform...</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>15 Desember 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium hover:underline">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Berita Utama 2" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <span class="inline-block bg-blue-600 text-white text-xs px-3 py-1 rounded-full mb-3">PEMERINTAHAN</span>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3 hover:text-blue-600">Rapat Koordinasi Penanganan Layanan Pengaduan Masyarakat</h3>
+                        <p class="text-gray-600 mb-4">Kepala Dinas memimpin rapat koordinasi untuk meningkatkan kualitas respon pengaduan masyarakat melalui berbagai kanal digital...</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>14 Desember 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium hover:underline">Baca Selengkapnya →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Berita Terbaru -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-gray-800">Berita Terbaru</h2>
+                <a href="news.html" class="text-blue-600 font-medium hover:underline">Lihat Semua →</a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=600&q=80" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="inline-block bg-green-100 text-green-700 text-xs px-2 py-1 rounded mb-2">KEGIATAN</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600">Sosialisasi Keamanan Siber untuk UMKM</h3>
+                        <p class="text-sm text-gray-600 mb-3">Workshop keamanan digital untuk pelaku UMKM di Kota Medan dihadiri 150 peserta...</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>13 Des 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=600&q=80" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="inline-block bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded mb-2">PENGUMUMAN</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600">Pendaftaran Pelatihan Coding untuk Pelajar Dibuka</h3>
+                        <p class="text-sm text-gray-600 mb-3">Program gratis untuk 200 pelajar SMA/SMK se-Kota Medan, pendaftaran hingga 20 Desember...</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>12 Des 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="inline-block bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded mb-2">LAYANAN</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600">Perpanjangan KTP Kini Bisa Online</h3>
+                        <p class="text-sm text-gray-600 mb-3">Layanan perpanjangan e-KTP kini tersedia melalui aplikasi mobile dan website resmi...</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>11 Des 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?w=600&q=80" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="inline-block bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded mb-2">PEMERINTAHAN</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600">Kunjungan Kerja ke Pemkot Surabaya</h3>
+                        <p class="text-sm text-gray-600 mb-3">Studi banding pengelolaan smart city dan transformasi digital layanan publik...</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>10 Des 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="inline-block bg-red-100 text-red-700 text-xs px-2 py-1 rounded mb-2">PENGUMUMAN</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600">Maintenance Server: 18-19 Desember</h3>
+                        <p class="text-sm text-gray-600 mb-3">Beberapa layanan online akan tidak dapat diakses sementara untuk pemeliharaan sistem...</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>09 Des 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="bg-white rounded-lg shadow hover:shadow-lg transition-shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80" alt="Berita" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="inline-block bg-green-100 text-green-700 text-xs px-2 py-1 rounded mb-2">KEGIATAN</span>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600">Lomba Website Desa Se-Kota Medan</h3>
+                        <p class="text-sm text-gray-600 mb-3">Kompetisi desain dan konten website desa dengan total hadiah Rp 50 juta...</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>08 Des 2025</span>
+                            <a href="show-news.html" class="text-blue-600 font-medium">Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kategori Populer -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Kategori Populer</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+                <a href="news.html" class="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                    <div class="text-4xl mb-3">🏛️</div>
+                    <h3 class="text-xl font-bold mb-2">Pemerintahan</h3>
+                    <p class="text-sm text-blue-100">32 Berita</p>
+                </a>
+                <a href="news.html" class="bg-gradient-to-br from-green-600 to-green-700 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                    <div class="text-4xl mb-3">📅</div>
+                    <h3 class="text-xl font-bold mb-2">Kegiatan</h3>
+                    <p class="text-sm text-green-100">45 Berita</p>
+                </a>
+                <a href="news.html" class="bg-gradient-to-br from-yellow-600 to-yellow-700 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                    <div class="text-4xl mb-3">📢</div>
+                    <h3 class="text-xl font-bold mb-2">Pengumuman</h3>
+                    <p class="text-sm text-yellow-100">28 Berita</p>
+                </a>
+                <a href="news.html" class="bg-gradient-to-br from-purple-600 to-purple-700 text-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105">
+                    <div class="text-4xl mb-3">🔧</div>
+                    <h3 class="text-xl font-bold mb-2">Layanan</h3>
+                    <p class="text-sm text-purple-100">21 Berita</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a8a] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Lembaga Permasyarakatan </h3>
+                    <p class="text-blue-200 mb-4">Kota Medan</p>
+                    <p class="text-sm text-blue-200">Portal berita resmi dan pusat informasi layanan pemerintah Kota Medan</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p>📍 Jl. Wastukencana No. 2, Bandung</p>
+                        <p>📞 (022) 4233823</p>
+                        <p>✉️ lapas@bandung.go.id</p>
+                        <p>🕒 Senin - Jumat: 08.00 - 16.00 WIB</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100">
+                            <span class="font-bold">f</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100">
+                            <span class="font-bold">𝕏</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100">
+                            <span class="font-bold">in</span>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100">
+                            <span class="font-bold">IG</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-700 mt-8 pt-6 text-center text-sm text-blue-200">
+                <p>&copy; 2025 Lembaga Permasyarakatan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
