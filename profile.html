@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Instansi - Lembaga Permasyarakatan Kota Medan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-[#1e3a8a] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Lembaga Permasyarakatan</h1>
+                        <p class="text-sm text-blue-200">Kota Medan</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="hover:text-blue-200 font-medium">Beranda</a>
+                    <a href="news.html" class="hover:text-blue-200 font-medium">Berita</a>
+                    <a href="pengumuman.html" class="hover:text-blue-200 font-medium">Pengumuman</a>
+                    
+                    <!-- Dropdown Profil -->
+                    <div class="relative group">
+                        <button class="hover:text-blue-200 font-medium flex items-center space-x-1 border-b-2 border-white pb-1">
+                            <span>Profil</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="profile.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Tentang Instansi</a>
+                                <a href="visi-misi.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Visi & Misi</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Struktur Organisasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="hover:text-blue-200 font-medium">Kontak</a>
+                    <a href="login.html" class="bg-white text-[#1e3a8a] px-4 py-2 rounded hover:bg-blue-50 font-medium">Login Admin</a>
+                </nav>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#1e4a9a] border-t border-blue-700">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Beranda</a>
+                <a href="news.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Berita</a>
+                <a href="pengumuman.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Pengumuman</a>
+                
+                <!-- Mobile Dropdown Profil -->
+                <div>
+                    <button onclick="toggleProfilDropdown()" class="w-full text-left py-2 hover:bg-blue-700 px-3 rounded flex items-center justify-between">
+                        <span>Profil</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="profilDropdown" class="hidden pl-4 space-y-1 mt-1">
+                        <a href="profile.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Tentang Instansi</a>
+                        <a href="visi-misi.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Visi & Misi</a>
+                        <a href="struktur.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Struktur Organisasi</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="block py-2 hover:bg-blue-700 px-3 rounded">Kontak</a>
+                <a href="login.html" class="block py-2 bg-white text-[#1e3a8a] px-3 rounded font-medium">Login Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <a href="index.html" class="hover:text-blue-600">Beranda</a>
+                <span>/</span>
+                <span>Profil</span>
+                <span>/</span>
+                <span class="text-gray-800 font-medium">Tentang Instansi</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-[#1e3a8a] to-[#2563eb] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-bold mb-3">Tentang Instansi</h1>
+                <p class="text-lg text-blue-100">Mengenal lebih dekat Lembaga Permasyarakatan Kota Medan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <!-- Deskripsi Singkat -->
+                <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                    <div class="flex items-start space-x-4 mb-6">
+                        <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fa-solid fa-building text-3xl text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-gray-800 mb-3">Sekilas Tentang Kami</h2>
+                            <p class="text-gray-600 leading-relaxed">
+                                Lembaga Permasyarakatan Kota Medan adalah lembaga pelaksana teknis di bidang sistem pemasyarakatan yang berada di bawah dan bertanggung jawab kepada Kementerian Hukum dan HAM Republik Indonesia. Kami berkomitmen untuk memberikan pelayanan terbaik kepada masyarakat melalui program pembinaan narapidana yang efektif dan profesional.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        Sejak didirikan pada tahun 1985, Lembaga Permasyarakatan Kota Medan telah melayani masyarakat dengan mengedepankan prinsip-prinsip kemanusiaan, keadilan, dan profesionalisme. Kami terus berinovasi dalam meningkatkan kualitas pelayanan dan pembinaan untuk mewujudkan sistem pemasyarakatan yang lebih baik.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed">
+                        Dengan didukung oleh sumber daya manusia yang kompeten dan infrastruktur yang memadai, kami berupaya untuk menciptakan lingkungan pembinaan yang kondusif bagi narapidana untuk kembali ke masyarakat sebagai warga negara yang baik dan produktif.
+                    </p>
+                </div>
+
+                <!-- Tugas & Fungsi -->
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-list-check text-xl text-green-600"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Tugas Pokok</h2>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Melaksanakan pembinaan narapidana dan anak didik pemasyarakatan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Memberikan bimbingan, pendidikan, dan pelatihan kepada narapidana</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Melakukan pengamanan dan ketertiban di lingkungan lembaga pemasyarakatan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check-circle text-green-600 mr-3 mt-1"></i>
+                                <span>Melaksanakan administrasi dan pelaporan kegiatan pemasyarakatan</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <i class="fa-solid fa-gears text-xl text-purple-600"></i>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-800">Fungsi Utama</h2>
+                        </div>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-cog text-purple-600 mr-3 mt-1"></i>
+                                <span>Pelaksanaan pembinaan kepribadian dan kemandirian narapidana</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-cog text-purple-600 mr-3 mt-1"></i>
+                                <span>Pengelolaan program pemasyarakatan yang berkelanjutan</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-cog text-purple-600 mr-3 mt-1"></i>
+                                <span>Koordinasi dengan instansi terkait dalam pembinaan narapidana</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-cog text-purple-600 mr-3 mt-1"></i>
+                                <span>Peningkatan kualitas layanan pemasyarakatan secara berkesinambungan</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nilai-nilai -->
+                <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg shadow-lg p-8 text-white mb-8">
+                    <h2 class="text-2xl font-bold mb-6 text-center">Nilai-Nilai Organisasi</h2>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-heart text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Integritas</h3>
+                            <p class="text-sm text-blue-100">Bekerja dengan jujur dan bertanggung jawab</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-users text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Profesional</h3>
+                            <p class="text-sm text-blue-100">Kompeten dan disiplin dalam bertugas</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-handshake text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Pelayanan</h3>
+                            <p class="text-sm text-blue-100">Mengutamakan kepentingan masyarakat</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-lightbulb text-2xl text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold mb-2">Inovasi</h3>
+                            <p class="text-sm text-blue-100">Terus berinovasi untuk kemajuan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Komitmen Pelayanan -->
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Komitmen Pelayanan Kami</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-6 border-2 border-gray-200 rounded-lg hover:border-blue-500 transition">
+                            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa-solid fa-shield-halved text-3xl text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Keamanan Terjamin</h3>
+                            <p class="text-gray-600 text-sm">Menjaga keamanan dan ketertiban lingkungan pemasyarakatan dengan sistem pengawasan 24/7</p>
+                        </div>
+                        <div class="text-center p-6 border-2 border-gray-200 rounded-lg hover:border-blue-500 transition">
+                            <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa-solid fa-graduation-cap text-3xl text-green-600"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Pembinaan Berkualitas</h3>
+                            <p class="text-gray-600 text-sm">Program pembinaan yang komprehensif untuk mengembangkan kepribadian dan keterampilan</p>
+                        </div>
+                        <div class="text-center p-6 border-2 border-gray-200 rounded-lg hover:border-blue-500 transition">
+                            <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa-solid fa-hands-helping text-3xl text-purple-600"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Humanis & Berkeadilan</h3>
+                            <p class="text-gray-600 text-sm">Menghormati hak asasi manusia dan menjunjung tinggi nilai-nilai kemanusiaan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a8a] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Lembaga Permasyarakatan</h3>
+                    <p class="text-blue-200 mb-4">Kota Medan</p>
+                    <p class="text-sm text-blue-200">Portal berita resmi dan pusat informasi layanan pemerintah Kota Medan</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p><i class="fa-solid fa-location-dot mr-2"></i>Jl. Wastukencana No. 2, Bandung</p>
+                        <p><i class="fa-solid fa-phone mr-2"></i>(022) 4233823</p>
+                        <p><i class="fa-solid fa-envelope mr-2"></i>lapas@bandung.go.id</p>
+                        <p><i class="fa-solid fa-clock mr-2"></i>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-700 mt-8 pt-6 text-center text-sm text-blue-200">
+                <p>&copy; 2026 Lembaga Permasyarakatan Kota Medan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleProfilDropdown() {
+            const dropdown = document.getElementById('profilDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const button = event.target.closest('button[onclick="toggleMobileMenu()"]');
+            const menuContent = event.target.closest('#mobileMenu');
+            
+            if (!button && !menuContent && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

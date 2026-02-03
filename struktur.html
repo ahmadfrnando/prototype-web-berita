@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi - Lembaga Permasyarakatan Kota Medan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-[#1e3a8a] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Lembaga Permasyarakatan</h1>
+                        <p class="text-sm text-blue-200">Kota Medan</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="hover:text-blue-200 font-medium">Beranda</a>
+                    <a href="news.html" class="hover:text-blue-200 font-medium">Berita</a>
+                    <a href="pengumuman.html" class="hover:text-blue-200 font-medium">Pengumuman</a>
+                    
+                    <!-- Dropdown Profil -->
+                    <div class="relative group">
+                        <button class="hover:text-blue-200 font-medium flex items-center space-x-1 border-b-2 border-white pb-1">
+                            <span>Profil</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="profile.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Tentang Instansi</a>
+                                <a href="visi-misi.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Visi & Misi</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Struktur Organisasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="hover:text-blue-200 font-medium">Kontak</a>
+                    <a href="login.html" class="bg-white text-[#1e3a8a] px-4 py-2 rounded hover:bg-blue-50 font-medium">Login Admin</a>
+                </nav>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#1e4a9a] border-t border-blue-700">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Beranda</a>
+                <a href="news.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Berita</a>
+                <a href="pengumuman.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Pengumuman</a>
+                
+                <!-- Mobile Dropdown Profil -->
+                <div>
+                    <button onclick="toggleProfilDropdown()" class="w-full text-left py-2 hover:bg-blue-700 px-3 rounded flex items-center justify-between">
+                        <span>Profil</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="profilDropdown" class="hidden pl-4 space-y-1 mt-1">
+                        <a href="profile.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Tentang Instansi</a>
+                        <a href="visi-misi.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Visi & Misi</a>
+                        <a href="struktur.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Struktur Organisasi</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="block py-2 hover:bg-blue-700 px-3 rounded">Kontak</a>
+                <a href="login.html" class="block py-2 bg-white text-[#1e3a8a] px-3 rounded font-medium">Login Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <a href="index.html" class="hover:text-blue-600">Beranda</a>
+                <span>/</span>
+                <span>Profil</span>
+                <span>/</span>
+                <span class="text-gray-800 font-medium">Struktur Organisasi</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-[#1e3a8a] to-[#2563eb] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-bold mb-3">Struktur Organisasi</h1>
+                <p class="text-lg text-blue-100">Susunan pimpinan dan pejabat struktural Lembaga Permasyarakatan Kota Medan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <!-- Kepala Instansi -->
+                <div class="mb-12">
+                    <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-xl p-8 text-white">
+                        <div class="text-center">
+                            <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fa-solid fa-user-tie text-5xl text-blue-600"></i>
+                            </div>
+                            <h3 class="text-sm font-medium text-blue-200 mb-2">KEPALA LEMBAGA PERMASYARAKATAN</h3>
+                            <h2 class="text-3xl font-bold mb-2">Dr. H. Ahmad Fauzi, S.H., M.H.</h2>
+                            <p class="text-blue-100 mb-4">NIP. 197203151995031002</p>
+                            <div class="flex items-center justify-center space-x-4 text-sm">
+                                <a href="mailto:kepala@lapas-medan.go.id" class="flex items-center space-x-2 hover:text-blue-200">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>kepala@lapas-medan.go.id</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sekretaris -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Tim Sekretariat</h2>
+                    <div class="bg-white rounded-xl shadow-md p-8 border-l-4 border-green-600">
+                        <div class="flex flex-col md:flex-row items-center md:items-start space-y-4 md:space-y-0 md:space-x-6">
+                            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-user-shield text-4xl text-green-600"></i>
+                            </div>
+                            <div class="text-center md:text-left flex-1">
+                                <h3 class="text-sm font-medium text-gray-500 mb-1">SEKRETARIS</h3>
+                                <h2 class="text-2xl font-bold text-gray-800 mb-2">Drs. Bambang Suryadi, M.M.</h2>
+                                <p class="text-gray-600 mb-3">NIP. 197505102000031003</p>
+                                <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4 text-sm text-gray-600">
+                                    <a href="mailto:sekretaris@lapas-medan.go.id" class="flex items-center justify-center md:justify-start space-x-2 hover:text-blue-600">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <span>sekretaris@lapas-medan.go.id</span>
+                                    </a>
+                                    <span class="hidden md:block">|</span>
+                                    <span class="flex items-center justify-center md:justify-start space-x-2">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span>(022) 4233824</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bidang-bidang -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Kepala Bidang</h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Bidang Pembinaan -->
+                        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-blue-600">
+                            <div class="text-center mb-4">
+                                <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-chalkboard-teacher text-3xl text-blue-600"></i>
+                                </div>
+                                <h3 class="text-xs font-medium text-gray-500 mb-2">KEPALA BIDANG</h3>
+                                <h4 class="text-sm font-bold text-blue-600 mb-3">Pembinaan Narapidana</h4>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h5 class="font-bold text-gray-800 mb-1">Siti Nurjanah, S.Sos., M.Si.</h5>
+                                <p class="text-xs text-gray-600 mb-3">NIP. 198001152005022002</p>
+                                <a href="mailto:pembinaan@lapas-medan.go.id" class="text-xs text-blue-600 hover:underline flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>pembinaan@lapas-medan.go.id</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bidang Keamanan -->
+                        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-red-600">
+                            <div class="text-center mb-4">
+                                <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-shield-halved text-3xl text-red-600"></i>
+                                </div>
+                                <h3 class="text-xs font-medium text-gray-500 mb-2">KEPALA BIDANG</h3>
+                                <h4 class="text-sm font-bold text-red-600 mb-3">Keamanan & Ketertiban</h4>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h5 class="font-bold text-gray-800 mb-1">Kombes Pol. Andi Wijaya, S.H.</h5>
+                                <p class="text-xs text-gray-600 mb-3">NIP. 197808202003031004</p>
+                                <a href="mailto:keamanan@lapas-medan.go.id" class="text-xs text-blue-600 hover:underline flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>keamanan@lapas-medan.go.id</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bidang Administrasi -->
+                        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-purple-600">
+                            <div class="text-center mb-4">
+                                <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-file-invoice text-3xl text-purple-600"></i>
+                                </div>
+                                <h3 class="text-xs font-medium text-gray-500 mb-2">KEPALA BIDANG</h3>
+                                <h4 class="text-sm font-bold text-purple-600 mb-3">Administrasi & Keuangan</h4>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h5 class="font-bold text-gray-800 mb-1">Rini Damayanti, S.E., M.Ak.</h5>
+                                <p class="text-xs text-gray-600 mb-3">NIP. 198203252006042001</p>
+                                <a href="mailto:administrasi@lapas-medan.go.id" class="text-xs text-blue-600 hover:underline flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>administrasi@lapas-medan.go.id</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bidang Kesehatan -->
+                        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-green-600">
+                            <div class="text-center mb-4">
+                                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-heartbeat text-3xl text-green-600"></i>
+                                </div>
+                                <h3 class="text-xs font-medium text-gray-500 mb-2">KEPALA BIDANG</h3>
+                                <h4 class="text-sm font-bold text-green-600 mb-3">Kesehatan & Pelayanan</h4>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h5 class="font-bold text-gray-800 mb-1">dr. Dewi Lestari, Sp.KJ.</h5>
+                                <p class="text-xs text-gray-600 mb-3">NIP. 198505112010012003</p>
+                                <a href="mailto:kesehatan@lapas-medan.go.id" class="text-xs text-blue-600 hover:underline flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>kesehatan@lapas-medan.go.id</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Bidang Registrasi -->
+                        <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-orange-600">
+                            <div class="text-center mb-4">
+                                <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <i class="fa-solid fa-clipboard-list text-3xl text-orange-600"></i>
+                                </div>
+                                <h3 class="text-xs font-medium text-gray-500 mb-2">KEPALA BIDANG</h3>
+                                <h4 class="text-sm font-bold text-orange-600 mb-3">Registrasi & Klasifikasi</h4>
+                            </div>
+                            <div class="border-t pt-4">
+                                <h5 class="font-bold text-gray-800 mb-1">Budi Santoso, S.H., M.H.</h5>
+                                <p class="text-xs text-gray-600 mb-3">NIP. 197912152005031005</p>
+                                <a href="mailto:registrasi@lapas-medan.go.id" class="text-xs text-blue-600 hover:underline flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>registrasi@lapas-medan.go.id</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Bidang Sarana -->
+                    <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border-t-4 border-cyan-600">
+                        <div class="text-center mb-4">
+                            <div class="w-20 h-20 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <i class="fa-solid fa-toolbox text-3xl text-cyan-600"></i>
+                            </div>
+                            <h3 class="text-xs font-medium text-gray-500 mb-2">KEPALA BIDANG</h3>
+                            <h4 class="text-sm font-bold text-cyan-600 mb-3">Sarana & Prasarana</h4>
+                        </div>
+                        <div class="border-t pt-4">
+                            <h5 class="font-bold text-gray-800 mb-1">Ir. Agus Setiawan, M.T.</h5>
+                            <p class="text-xs text-gray-600 mb-3">NIP. 197606102002031006</p>
+                            <a href="mailto:sarana@lapas-medan.go.id" class="text-xs text-blue-600 hover:underline flex items-center justify-center space-x-1">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>sarana@lapas-medan.go.id</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Catatan -->
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-lg">
+                <div class="flex items-start space-x-3">
+                    <i class="fa-solid fa-info-circle text-yellow-600 text-xl mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-2">Catatan Penting</h3>
+                        <p class="text-sm text-gray-700">Struktur organisasi dapat berubah sewaktu-waktu sesuai dengan kebijakan dan kebutuhan instansi. Informasi yang tertera merupakan data terkini per Januari 2026. Untuk informasi lebih lanjut, silakan hubungi bagian sekretariat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#1e3a8a] text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold mb-4">Lembaga Permasyarakatan</h3>
+                <p class="text-blue-200 mb-4">Kota Medan</p>
+                <p class="text-sm text-blue-200">Portal berita resmi dan pusat informasi layanan pemerintah Kota Medan</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                <div class="space-y-2 text-sm text-blue-200">
+                    <p><i class="fa-solid fa-location-dot mr-2"></i>Jl. Wastukencana No. 2, Bandung</p>
+                    <p><i class="fa-solid fa-phone mr-2"></i>(022) 4233823</p>
+                    <p><i class="fa-solid fa-envelope mr-2"></i>lapas@bandung.go.id</p>
+                    <p><i class="fa-solid fa-clock mr-2"></i>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4">Media Sosial</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-blue-700 mt-8 pt-6 text-center text-sm text-blue-200">
+            <p>&copy; 2026 Lembaga Permasyarakatan Kota Medan. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('hidden');
+    }
+
+    function toggleProfilDropdown() {
+        const dropdown = document.getElementById('profilDropdown');
+        dropdown.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('mobileMenu');
+        const button = event.target.closest('button[onclick="toggleMobileMenu()"]');
+        const menuContent = event.target.closest('#mobileMenu');
+        
+        if (!button && !menuContent && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+        }
+    });
+</script>

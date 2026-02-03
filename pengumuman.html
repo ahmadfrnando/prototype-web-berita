@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman - Lembaga Permasyarakatan Kota Medan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-[#1e3a8a] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Lembaga Permasyarakatan</h1>
+                        <p class="text-sm text-blue-200">Kota Medan</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="hover:text-blue-200 font-medium">Beranda</a>
+                    <a href="news.html" class="hover:text-blue-200 font-medium">Berita</a>
+                    <a href="pengumuman.html" class="hover:text-blue-200 font-medium border-b-2 border-white pb-1">Pengumuman</a>
+                    
+                    <!-- Dropdown Profil -->
+                    <div class="relative group">
+                        <button class="hover:text-blue-200 font-medium flex items-center space-x-1">
+                            <span>Profil</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="profile.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Tentang Instansi</a>
+                                <a href="visi-misi.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Visi & Misi</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Struktur Organisasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="hover:text-blue-200 font-medium">Kontak</a>
+                    <a href="login.html" class="bg-white text-[#1e3a8a] px-4 py-2 rounded hover:bg-blue-50 font-medium">Login Admin</a>
+                </nav>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#1e4a9a] border-t border-blue-700">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Beranda</a>
+                <a href="news.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Berita</a>
+                <a href="pengumuman.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Pengumuman</a>
+                
+                <!-- Mobile Dropdown Profil -->
+                <div>
+                    <button onclick="toggleProfilDropdown()" class="w-full text-left py-2 hover:bg-blue-700 px-3 rounded flex items-center justify-between">
+                        <span>Profil</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="profilDropdown" class="hidden pl-4 space-y-1 mt-1">
+                        <a href="profile.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Tentang Instansi</a>
+                        <a href="visi-misi.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Visi & Misi</a>
+                        <a href="struktur.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Struktur Organisasi</a>
+                    </div>
+                </div>
+                
+                <a href="#" class="block py-2 hover:bg-blue-700 px-3 rounded">Kontak</a>
+                <a href="login.html" class="block py-2 bg-white text-[#1e3a8a] px-3 rounded font-medium">Login Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <a href="index.html" class="hover:text-blue-600">Beranda</a>
+                <span>/</span>
+                <span class="text-gray-800 font-medium">Pengumuman</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-[#1e3a8a] to-[#2563eb] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-bold mb-3">Pengumuman Resmi</h1>
+                <p class="text-lg text-blue-100">Informasi penting dan pengumuman resmi dari Lembaga Permasyarakatan Kota Medan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-white border-b">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-4">
+                    <input type="text" placeholder="Cari pengumuman..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option>Semua Kategori</option>
+                        <option>Informasi Layanan</option>
+                        <option>Rekrutmen</option>
+                        <option>Jadwal</option>
+                        <option>Umum</option>
+                    </select>
+                    <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+                        <i class="fa-solid fa-search mr-2"></i>Cari
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengumuman List -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto space-y-6">
+                <!-- Pengumuman Item 1 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-red-600">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full font-medium">PENTING</span>
+                        <span class="text-sm text-gray-500">20 Januari 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-600">Pembukaan Pendaftaran Seleksi CPNS Tahun 2026</h3>
+                    <p class="text-gray-600 mb-4">Lembaga Permasyarakatan Kota Medan membuka pendaftaran Calon Pegawai Negeri Sipil (CPNS) tahun 2026 untuk berbagai formasi. Pendaftaran dibuka mulai 25 Januari hingga 10 Februari 2026 melalui portal SSCASN.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-bullhorn mr-1"></i>Rekrutmen</span>
+                            <span><i class="fa-solid fa-calendar mr-1"></i>Berlaku s.d. 10 Feb 2026</span>
+                        </div>
+                        <a href="#" class="text-blue-600 font-medium hover:underline">Lihat Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Pengumuman Item 2 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-yellow-600">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-medium">JADWAL</span>
+                        <span class="text-sm text-gray-500">18 Januari 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-600">Jadwal Maintenance Sistem Informasi Layanan Publik</h3>
+                    <p class="text-gray-600 mb-4">Dalam rangka peningkatan kualitas layanan, sistem informasi layanan publik akan mengalami maintenance pada tanggal 25-26 Januari 2026 pukul 22.00 - 06.00 WIB. Selama periode tersebut, beberapa layanan online tidak dapat diakses.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-info-circle mr-1"></i>Informasi Layanan</span>
+                            <span><i class="fa-solid fa-clock mr-1"></i>25-26 Jan 2026</span>
+                        </div>
+                        <a href="#" class="text-blue-600 font-medium hover:underline">Lihat Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Pengumuman Item 3 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-blue-600">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full font-medium">INFORMASI LAYANAN</span>
+                        <span class="text-sm text-gray-500">15 Januari 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-600">Layanan Perpanjangan e-KTP Kini Tersedia Secara Online</h3>
+                    <p class="text-gray-600 mb-4">Masyarakat Kota Medan kini dapat melakukan perpanjangan e-KTP secara online melalui aplikasi mobile dan website resmi. Layanan ini tersedia 24 jam dan tidak memerlukan kunjungan ke kantor Dukcapil.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-globe mr-1"></i>Informasi Layanan</span>
+                            <span><i class="fa-solid fa-check-circle mr-1"></i>Aktif Sekarang</span>
+                        </div>
+                        <a href="#" class="text-blue-600 font-medium hover:underline">Lihat Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Pengumuman Item 4 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-green-600">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">UMUM</span>
+                        <span class="text-sm text-gray-500">12 Januari 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-600">Libur Nasional dan Cuti Bersama Tahun 2026</h3>
+                    <p class="text-gray-600 mb-4">Sesuai Surat Keputusan Bersama (SKB) 3 Menteri tentang Hari Libur Nasional dan Cuti Bersama Tahun 2026, berikut adalah jadwal lengkap libur nasional dan cuti bersama untuk tahun 2026.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-calendar-check mr-1"></i>Umum</span>
+                            <span><i class="fa-solid fa-file-pdf mr-1"></i>Unduh SKB</span>
+                        </div>
+                        <a href="#" class="text-blue-600 font-medium hover:underline">Lihat Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Pengumuman Item 5 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-purple-600">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">REKRUTMEN</span>
+                        <span class="text-sm text-gray-500">08 Januari 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-600">Lowongan Tenaga Kontrak Bidang IT dan Administrasi</h3>
+                    <p class="text-gray-600 mb-4">Lembaga Permasyarakatan Kota Medan membuka lowongan untuk tenaga kontrak pada bidang IT (3 posisi) dan Administrasi (5 posisi). Pendaftaran dibuka hingga 31 Januari 2026.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-users mr-1"></i>Rekrutmen</span>
+                            <span><i class="fa-solid fa-calendar mr-1"></i>s.d. 31 Jan 2026</span>
+                        </div>
+                        <a href="#" class="text-blue-600 font-medium hover:underline">Lihat Detail →</a>
+                    </div>
+                </div>
+
+                <!-- Pengumuman Item 6 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-6 border-l-4 border-orange-600">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-medium">JADWAL</span>
+                        <span class="text-sm text-gray-500">05 Januari 2026</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-blue-600">Jadwal Pelaksanaan Verifikasi Berkas Administrasi Seleksi PPPK</h3>
+                    <p class="text-gray-600 mb-4">Bagi peserta seleksi PPPK yang telah dinyatakan lulus tahap seleksi kompetensi, diwajibkan mengikuti verifikasi berkas administrasi pada tanggal 15-20 Januari 2026 di Kantor Lembaga Permasyarakatan.</p>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span><i class="fa-solid fa-clipboard-check mr-1"></i>Rekrutmen</span>
+                            <span><i class="fa-solid fa-map-marker-alt mr-1"></i>Kantor LP Medan</span>
+                        </div>
+                        <a href="#" class="text-blue-600 font-medium hover:underline">Lihat Detail →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="max-w-5xl mx-auto mt-12">
+                <div class="flex items-center justify-center space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">1</button>
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">2</button>
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50">3</button>
+                    <button class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-blue-50">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a8a] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Lembaga Permasyarakatan</h3>
+                    <p class="text-blue-200 mb-4">Kota Medan</p>
+                    <p class="text-sm text-blue-200">Portal berita resmi dan pusat informasi layanan pemerintah Kota Medan</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p><i class="fa-solid fa-location-dot mr-2"></i>Jl. Wastukencana No. 2, Bandung</p>
+                        <p><i class="fa-solid fa-phone mr-2"></i>(022) 4233823</p>
+                        <p><i class="fa-solid fa-envelope mr-2"></i>lapas@bandung.go.id</p>
+                        <p><i class="fa-solid fa-clock mr-2"></i>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-700 mt-8 pt-6 text-center text-sm text-blue-200">
+                <p>&copy; 2026 Lembaga Permasyarakatan Kota Medan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleProfilDropdown() {
+            const dropdown = document.getElementById('profilDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const button = event.target.closest('button[onclick="toggleMobileMenu()"]');
+            const menuContent = event.target.closest('#mobileMenu');
+            
+            if (!button && !menuContent && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

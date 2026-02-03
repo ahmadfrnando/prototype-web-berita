@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - Lembaga Permasyarakatan Kota Medan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-[#1e3a8a] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">Lembaga Permasyarakatan</h1>
+                        <p class="text-sm text-blue-200">Kota Medan</p>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="hover:text-blue-200 font-medium">Beranda</a>
+                    <a href="berita.html" class="hover:text-blue-200 font-medium">Berita</a>
+                    <a href="pengumuman.html" class="hover:text-blue-200 font-medium">Pengumuman</a>
+                    
+                    <!-- Dropdown Profil -->
+                    <div class="relative group">
+                        <button class="hover:text-blue-200 font-medium flex items-center space-x-1">
+                            <span>Profil</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div class="py-2">
+                                <a href="profil.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Tentang Instansi</a>
+                                <a href="visi-misi.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Visi & Misi</a>
+                                <a href="struktur.html" class="block px-4 py-2 text-gray-800 hover:bg-blue-50 hover:text-[#1e3a8a] font-medium">Struktur Organisasi</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="kontak.html" class="hover:text-blue-200 font-medium border-b-2 border-white pb-1">Kontak</a>
+                    <a href="login.html" class="bg-white text-[#1e3a8a] px-4 py-2 rounded hover:bg-blue-50 font-medium">Login Admin</a>
+                </nav>
+                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-[#1e4a9a] border-t border-blue-700">
+            <div class="container mx-auto px-4 py-4 space-y-2">
+                <a href="index.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Beranda</a>
+                <a href="berita.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Berita</a>
+                <a href="pengumuman.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Pengumuman</a>
+                
+                <!-- Mobile Dropdown Profil -->
+                <div>
+                    <button onclick="toggleProfilDropdown()" class="w-full text-left py-2 hover:bg-blue-700 px-3 rounded flex items-center justify-between">
+                        <span>Profil</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="profilDropdown" class="hidden pl-4 space-y-1 mt-1">
+                        <a href="profil.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Tentang Instansi</a>
+                        <a href="visi-misi.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Visi & Misi</a>
+                        <a href="struktur.html" class="block py-2 hover:bg-blue-700 px-3 rounded text-sm">Struktur Organisasi</a>
+                    </div>
+                </div>
+                
+                <a href="kontak.html" class="block py-2 hover:bg-blue-700 px-3 rounded">Kontak</a>
+                <a href="login.html" class="block py-2 bg-white text-[#1e3a8a] px-3 rounded font-medium">Login Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <a href="index.html" class="hover:text-blue-600">Beranda</a>
+                <span>/</span>
+                <span class="text-gray-800 font-medium">Kontak</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="bg-gradient-to-br from-[#1e3a8a] to-[#2563eb] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl font-bold mb-3">Hubungi Kami</h1>
+                <p class="text-lg text-blue-100">Kami siap melayani dan menjawab pertanyaan Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <!-- Info Kontak -->
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-location-dot text-3xl text-blue-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">Alamat Kantor</h3>
+                        <p class="text-gray-600 text-sm">Jl. Wastukencana No. 2<br>Bandung, Jawa Barat<br>40115, Indonesia</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-phone text-3xl text-green-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">Telepon</h3>
+                        <p class="text-gray-600 text-sm mb-2">Kantor: (022) 4233823</p>
+                        <p class="text-gray-600 text-sm">Fax: (022) 4233824</p>
+                        <p class="text-gray-600 text-sm mt-2">Hotline 24/7:<br><span class="font-bold text-green-600">0800-123-4567</span></p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-envelope text-3xl text-purple-600"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-2">Email</h3>
+                        <p class="text-gray-600 text-sm mb-1">info@lapas-medan.go.id</p>
+                        <p class="text-gray-600 text-sm mb-1">pengaduan@lapas-medan.go.id</p>
+                        <p class="text-gray-600 text-sm">humas@lapas-medan.go.id</p>
+                    </div>
+                </div>
+
+                <!-- Jam Layanan -->
+                <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl shadow-lg p-8 text-white mb-12">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa-solid fa-clock text-4xl text-blue-600"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-4">Jam Layanan</h2>
+                        <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                            <div>
+                                <h3 class="font-bold mb-2">Hari Kerja</h3>
+                                <p class="text-blue-100">Senin - Kamis: 08.00 - 16.00 WIB</p>
+                                <p class="text-blue-100">Jumat: 08.00 - 16.30 WIB</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold mb-2">Hari Libur</h3>
+                                <p class="text-blue-100">Sabtu, Minggu & Hari Libur Nasional</p>
+                                <p class="text-blue-100 text-sm">(Tutup - Kecuali Layanan Darurat)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Form Kontak -->
+                    <div class="bg-white rounded-xl shadow-md p-8">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h2>
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap <span class="text-red-600">*</span></label>
+                                <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Masukkan nama lengkap">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email <span class="text-red-600">*</span></label>
+                                <input type="email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="nama@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Nomor Telepon</label>
+                                <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="08xxxxxxxxxx">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Subjek <span class="text-red-600">*</span></label>
+                                <select required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Pilih Subjek</option>
+                                    <option>Informasi Umum</option>
+                                    <option>Pengaduan Layanan</option>
+                                    <option>Permintaan Data</option>
+                                    <option>Kerjasama</option>
+                                    <option>Lainnya</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Pesan <span class="text-red-600">*</span></label>
+                                <textarea required rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Tulis pesan Anda di sini..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-medium">
+                                <i class="fa-solid fa-paper-plane mr-2"></i>Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Peta & Info Tambahan -->
+                    <div class="space-y-6">
+                        <!-- Peta -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                            <div class="h-80 bg-gray-200 flex items-center justify-center">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798464181229!2d107.6098549!3d-6.914744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e64c7e2f7b5d%3A0x6c2c6e0c4c0c4c0c!2sBandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1234567890" width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Media Sosial -->
+                        <div class="bg-white rounded-xl shadow-md p-6">
+                            <h3 class="font-bold text-lg text-gray-800 mb-4">Ikuti Kami</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="#" class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition">
+                                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                                        <i class="fa-brands fa-facebook-f text-white"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-700">Facebook</span>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-500 transition">
+                                    <div class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center">
+                                        <i class="fa-brands fa-twitter text-white"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-700">Twitter</span>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-pink-50 hover:border-pink-500 transition">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
+                                        <i class="fa-brands fa-instagram text-white"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-700">Instagram</span>
+                                </a>
+                                <a href="#" class="flex items-center space-x-3 p-3 border border-gray-200 rounded-lg hover:bg-red-50 hover:border-red-500 transition">
+                                    <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                                        <i class="fa-brands fa-youtube text-white"></i>
+                                    </div>
+                                    <span class="font-medium text-gray-700">YouTube</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Layanan Pengaduan -->
+                        <div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-md p-6 text-white">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-headset text-2xl text-orange-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg mb-2">Layanan Pengaduan</h3>
+                                    <p class="text-sm text-orange-100 mb-3">Untuk pengaduan layanan, silakan hubungi:</p>
+                                    <p class="font-bold text-xl">0800-123-4567</p>
+                                    <p class="text-sm text-orange-100">pengaduan@lapas-medan.go.id</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e3a8a] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Lembaga Permasyarakatan</h3>
+                    <p class="text-blue-200 mb-4">Kota Medan</p>
+                    <p class="text-sm text-blue-200">Portal berita resmi dan pusat informasi layanan pemerintah Kota Medan</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                    <div class="space-y-2 text-sm text-blue-200">
+                        <p><i class="fa-solid fa-location-dot mr-2"></i>Jl. Wastukencana No. 2, Bandung</p>
+                        <p><i class="fa-solid fa-phone mr-2"></i>(022) 4233823</p>
+                        <p><i class="fa-solid fa-envelope mr-2"></i>lapas@bandung.go.id</p>
+                        <p><i class="fa-solid fa-clock mr-2"></i>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Media Sosial</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-white text-[#1e3a8a] rounded-full flex items-center justify-center hover:bg-blue-100 transition">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-blue-700 mt-8 pt-6 text-center text-sm text-blue-200">
+                <p>&copy; 2026 Lembaga Permasyarakatan Kota Medan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function toggleProfilDropdown() {
+            const dropdown = document.getElementById('profilDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('mobileMenu');
+            const button = event.target.closest('button[onclick="toggleMobileMenu()"]');
+            const menuContent = event.target.closest('#mobileMenu');
+            
+            if (!button && !menuContent && !menu.classList.contains('hidden')) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
