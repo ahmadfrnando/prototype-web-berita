@@ -14,46 +14,51 @@
 <body class="bg-gray-100">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-[#1e3a8a] text-white transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto">
             <div class="p-6 border-b border-blue-700">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
-                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                            <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                        </div>
+                        <div>
+                            <h2 class="font-bold">Admin Panel</h2>
+                            <p class="text-xs text-blue-200">lapas Bandung</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="font-bold">Admin Panel</h2>
-                        <p class="text-xs text-blue-200">lapas Bandung</p>
-                    </div>
+                    <button id="closeSidebar" class="lg:hidden text-white hover:text-blue-200">
+                        <i class="fa-solid fa-times text-2xl"></i>
+                    </button>
                 </div>
             </div>
-            <nav class="p-4">
+            <nav class="p-4 overflow-y-auto h-[calc(100vh-120px)]">
                 <ul class="space-y-2">
                     <li>
-                        <a href="index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                        <a href="admin-dashboard.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
                             <span><i class="fa-solid fa-gauge-high"></i></span>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="news.html" class="flex items-center space-x-3 px-4 py-3 bg-blue-700 rounded-lg font-medium">
+                        <a href="admin-berita.html" class="flex items-center space-x-3 px-4 py-3 bg-blue-700 rounded-lg font-medium">
                             <span><i class="fa-solid fa-newspaper"></i></span>
                             <span>Kelola Berita</span>
                         </a>
                     </li>
                     <li>
-                        <a href="approval.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                        <a href="admin-approval.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
                             <span><i class="fa-solid fa-circle-check"></i></span>
                             <span>Approval Berita</span>
                         </a>
                     </li>
                     <li>
-                        <a href="users.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
+                        <a href="admin-users.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
                             <span><i class="fa-solid fa-users"></i></span>
                             <span>Pengguna</span>
                         </a>
                     </li>
                     <li class="pt-4 mt-4 border-t border-blue-700">
-                        <a href="../index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
+                        <a href="login.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
                             <span><i class="fa-solid fa-right-from-bracket"></i></span>
                             <span>Logout</span>
                         </a>
@@ -62,15 +67,24 @@
             </nav>
         </aside>
 
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
         <!-- Main Content -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto w-full">
             <!-- Top Bar -->
-            <header class="bg-white shadow-sm sticky top-0 z-10">
-                <div class="flex items-center justify-between px-8 py-4">
-                    <h1 class="text-2xl font-bold text-gray-800">Kelola Berita</h1>
+            <header class="bg-white shadow-sm sticky top-0 z-30">
+                <div class="flex items-center justify-between px-4 md:px-8 py-4">
                     <div class="flex items-center space-x-4">
-                        <a href="create-news.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
-                            + Tambah Berita
+                        <button id="openSidebar" class="lg:hidden text-gray-600 hover:text-gray-800">
+                            <i class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Kelola Berita</h1>
+                    </div>
+                    <div class="flex items-center space-x-2 md:space-x-4">
+                        <a href="create-news.html" class="bg-blue-600 text-white px-3 md:px-5 py-2 rounded-lg hover:bg-blue-700 transition font-medium text-sm md:text-base">
+                            <span class="hidden sm:inline">+ Tambah Berita</span>
+                            <span class="sm:hidden">+</span>
                         </a>
                         <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                             A
@@ -80,10 +94,10 @@
             </header>
 
             <!-- Content -->
-            <main class="p-8">
+            <main class="p-4 md:p-8">
                 <!-- Filter Section -->
-                <div class="bg-white rounded-lg shadow p-6 mb-6">
-                    <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 mb-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <input type="text" placeholder="Cari judul berita..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option>Semua Status</option>
@@ -106,7 +120,8 @@
 
                 <!-- Table -->
                 <div class="bg-white rounded-lg shadow overflow-hidden">
-                    <div class="overflow-x-auto">
+                    <!-- Desktop/Tablet Table View -->
+                    <div class="hidden md:block overflow-x-auto">
                         <table class="w-full">
                             <thead class="bg-gray-50">
                                 <tr>
@@ -298,18 +313,161 @@
                         </table>
                     </div>
 
+                    <!-- Mobile Card View -->
+                    <div class="md:hidden divide-y divide-gray-200">
+                        <!-- Card 1 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Peluncuran Aplikasi Layanan Publik Terintegrasi</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Pemerintahan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Published</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Admin</span>
+                                <span>15 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button onclick="confirmDelete('Peluncuran Aplikasi')" class="text-red-600 hover:text-red-800 font-medium text-sm">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Rapat Koordinasi Penanganan Layanan Pengaduan</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Pemerintahan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Published</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Budi Santoso</span>
+                                <span>14 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button onclick="confirmDelete('Rapat Koordinasi')" class="text-red-600 hover:text-red-800 font-medium text-sm">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Sosialisasi Keamanan Siber untuk UMKM</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Kegiatan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Published</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Siti Nurhaliza</span>
+                                <span>13 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button onclick="confirmDelete('Sosialisasi')" class="text-red-600 hover:text-red-800 font-medium text-sm">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Pendaftaran Pelatihan Coding untuk Pelajar</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Pengumuman</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Published</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Andi Wijaya</span>
+                                <span>12 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button onclick="confirmDelete('Pendaftaran')" class="text-red-600 hover:text-red-800 font-medium text-sm">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Perpanjangan KTP Kini Bisa Online</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Layanan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Published</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Rini Damayanti</span>
+                                <span>11 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button onclick="confirmDelete('Perpanjangan KTP')" class="text-red-600 hover:text-red-800 font-medium text-sm">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Pembukaan Pendaftaran Program Magang Digital</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Pengumuman</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Siti Nurhaliza</span>
+                                <span>16 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button class="text-green-600 hover:text-green-800 font-medium text-sm">Submit Review</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Workshop Transformasi Digital untuk ASN</h3>
+                                <div class="flex items-center space-x-2 text-sm mb-2">
+                                    <span class="text-gray-600">Kegiatan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-gray-100 text-gray-800">Draft</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Andi Wijaya</span>
+                                <span>15 Des 2025</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <a href="edit-news.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Edit</a>
+                                <button class="text-green-600 hover:text-green-800 font-medium text-sm">Submit Review</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Pagination -->
-                    <div class="px-6 py-4 border-t border-gray-200">
-                        <div class="flex items-center justify-between">
+                    <div class="px-4 md:px-6 py-4 border-t border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div class="text-sm text-gray-600">
                                 Menampilkan 1 - 7 dari 127 berita
                             </div>
-                            <div class="flex space-x-2">
-                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed">Previous</button>
-                                <button class="px-4 py-2 rounded bg-blue-600 text-white font-medium">1</button>
-                                <button class="px-4 py-2 rounded bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">2</button>
-                                <button class="px-4 py-2 rounded bg-white border border-gray-300 text-gray-700 hover:bg-gray-50">3</button>
-                                <button class="px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Next</button>
+                            <div class="flex flex-wrap justify-center gap-2">
+                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed text-sm">Previous</button>
+                                <button class="px-4 py-2 rounded bg-blue-600 text-white font-medium text-sm">1</button>
+                                <button class="px-4 py-2 rounded bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 text-sm">2</button>
+                                <button class="px-4 py-2 rounded bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 text-sm">3</button>
+                                <button class="px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700 text-sm">Next</button>
                             </div>
                         </div>
                     </div>
@@ -318,9 +476,9 @@
         </div>
     </div>
 
-    <!-- Delete Confirmation Modal (Hidden by default) -->
+    <!-- Delete Confirmation Modal -->
     <div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 max-w-md mx-4">
+        <div class="bg-white rounded-lg p-6 md:p-8 max-w-md mx-4 w-full">
             <h3 class="text-xl font-bold text-gray-800 mb-4">Konfirmasi Hapus</h3>
             <p class="text-gray-600 mb-6">Apakah Anda yakin ingin menghapus berita "<span id="newsTitle" class="font-medium"></span>"?</p>
             <div class="flex justify-end space-x-3">
@@ -331,6 +489,35 @@
     </div>
 
     <script>
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        function showSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        openSidebar.addEventListener('click', showSidebar);
+        closeSidebar.addEventListener('click', hideSidebar);
+        overlay.addEventListener('click', hideSidebar);
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                hideSidebar();
+            }
+        });
+
+        // Delete Modal
         function confirmDelete(title) {
             document.getElementById('newsTitle').textContent = title;
             document.getElementById('deleteModal').classList.remove('hidden');
@@ -341,7 +528,6 @@
         }
 
         function deleteNews() {
-            // Simulate delete action
             alert('Berita berhasil dihapus!');
             closeDeleteModal();
         }

@@ -14,19 +14,24 @@
 <body class="bg-gray-100">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-[#1e3a8a] text-white transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto">
             <div class="p-6 border-b border-blue-700">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
-                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                            <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                        </div>
+                        <div>
+                            <h2 class="font-bold">Admin Panel</h2>
+                            <p class="text-xs text-blue-200">lapas Bandung</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="font-bold">Admin Panel</h2>
-                        <p class="text-xs text-blue-200">lapas Bandung</p>
-                    </div>
+                    <button id="closeSidebar" class="lg:hidden text-white hover:text-blue-200">
+                        <i class="fa-solid fa-times text-2xl"></i>
+                    </button>
                 </div>
             </div>
-            <nav class="p-4">
+            <nav class="p-4 overflow-y-auto h-[calc(100vh-120px)]">
                 <ul class="space-y-2">
                     <li>
                         <a href="index.html" class="flex items-center space-x-3 px-4 py-3 bg-blue-700 rounded-lg font-medium">
@@ -62,14 +67,22 @@
             </nav>
         </aside>
 
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
         <!-- Main Content -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto w-full">
             <!-- Top Bar -->
-            <header class="bg-white shadow-sm sticky top-0 z-10">
-                <div class="flex items-center justify-between px-8 py-4">
-                    <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+            <header class="bg-white shadow-sm sticky top-0 z-30">
+                <div class="flex items-center justify-between px-4 md:px-8 py-4">
                     <div class="flex items-center space-x-4">
-                        <span class="text-sm text-gray-600">Selamat datang, <strong>Admin</strong></span>
+                        <button id="openSidebar" class="lg:hidden text-gray-600 hover:text-gray-800">
+                            <i class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Dashboard</h1>
+                    </div>
+                    <div class="flex items-center space-x-2 md:space-x-4">
+                        <span class="text-xs md:text-sm text-gray-600 hidden sm:block">Selamat datang, <strong>Admin</strong></span>
                         <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                             A
                         </div>
@@ -78,9 +91,9 @@
             </header>
 
             <!-- Dashboard Content -->
-            <main class="p-8">
+            <main class="p-4 md:p-8">
                 <!-- Statistics Cards -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
                     <!-- Card 1 -->
                     <div class="bg-white rounded-lg shadow p-6 border-l-4 border-blue-600">
                         <div class="flex items-center justify-between">
@@ -89,7 +102,7 @@
                                 <h3 class="text-3xl font-bold text-gray-800">127</h3>
                             </div>
                             <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-newspaper"></i>
+                                <i class="fa-solid fa-newspaper text-blue-600"></i>
                             </div>
                         </div>
                         <p class="text-xs text-green-600 mt-3">↑ 12% dari bulan lalu</p>
@@ -103,7 +116,7 @@
                                 <h3 class="text-3xl font-bold text-gray-800">8</h3>
                             </div>
                             <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-pen-to-square"></i>
+                                <i class="fa-solid fa-pen-to-square text-gray-600"></i>
                             </div>
                         </div>
                         <p class="text-xs text-gray-600 mt-3">Menunggu ditulis</p>
@@ -117,7 +130,7 @@
                                 <h3 class="text-3xl font-bold text-gray-800">5</h3>
                             </div>
                             <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-hourglass-half"></i>
+                                <i class="fa-solid fa-hourglass-half text-yellow-600"></i>
                             </div>
                         </div>
                         <p class="text-xs text-yellow-600 mt-3">Perlu direview segera</p>
@@ -131,7 +144,7 @@
                                 <h3 class="text-3xl font-bold text-gray-800">114</h3>
                             </div>
                             <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-2xl">
-                                <i class="fa-solid fa-circle-check"></i>
+                                <i class="fa-solid fa-circle-check text-green-600"></i>
                             </div>
                         </div>
                         <p class="text-xs text-green-600 mt-3">Berita aktif</p>
@@ -140,10 +153,12 @@
 
                 <!-- Berita Terbaru yang Perlu Review -->
                 <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-gray-200">
-                        <h2 class="text-xl font-bold text-gray-800">Berita yang Perlu Direview</h2>
+                    <div class="px-4 md:px-6 py-4 border-b border-gray-200">
+                        <h2 class="text-lg md:text-xl font-bold text-gray-800">Berita yang Perlu Direview</h2>
                     </div>
-                    <div class="overflow-x-auto">
+                    
+                    <!-- Desktop/Tablet Table View -->
+                    <div class="hidden md:block overflow-x-auto">
                         <table class="w-full">
                             <thead class="bg-gray-50">
                                 <tr>
@@ -269,9 +284,127 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- Mobile Card View -->
+                    <div class="md:hidden divide-y divide-gray-200">
+                        <!-- Card 1 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Pembukaan Pendaftaran Program Magang Digital</h3>
+                                <div class="flex items-center space-x-2 text-sm">
+                                    <span class="text-gray-600">Pengumuman</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Siti Nurhaliza</span>
+                                <span>16 Des 2025</span>
+                            </div>
+                            <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Workshop Transformasi Digital untuk ASN</h3>
+                                <div class="flex items-center space-x-2 text-sm">
+                                    <span class="text-gray-600">Kegiatan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Andi Wijaya</span>
+                                <span>15 Des 2025</span>
+                            </div>
+                            <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Pemeliharaan Server: 18-19 Desember 2025</h3>
+                                <div class="flex items-center space-x-2 text-sm">
+                                    <span class="text-gray-600">Pengumuman</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Budi Santoso</span>
+                                <span>14 Des 2025</span>
+                            </div>
+                            <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Integrasi Sistem Perizinan dengan OSS</h3>
+                                <div class="flex items-center space-x-2 text-sm">
+                                    <span class="text-gray-600">Pemerintahan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Rini Damayanti</span>
+                                <span>14 Des 2025</span>
+                            </div>
+                            <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="mb-3">
+                                <h3 class="font-bold text-gray-800 mb-2">Pelatihan Digital Marketing untuk Pelaku UMKM</h3>
+                                <div class="flex items-center space-x-2 text-sm">
+                                    <span class="text-gray-600">Kegiatan</span>
+                                    <span class="text-gray-400">•</span>
+                                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">Review</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-sm text-gray-600 mb-3">
+                                <span>Agus Setiawan</span>
+                                <span>13 Des 2025</span>
+                            </div>
+                            <a href="approval.html" class="text-blue-600 hover:text-blue-800 font-medium text-sm">Review →</a>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        function showSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        openSidebar.addEventListener('click', showSidebar);
+        closeSidebar.addEventListener('click', hideSidebar);
+        overlay.addEventListener('click', hideSidebar);
+
+        // Close sidebar on window resize to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                hideSidebar();
+            }
+        });
+    </script>
 </body>
 </html>
