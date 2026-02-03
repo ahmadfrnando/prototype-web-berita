@@ -14,19 +14,24 @@
 <body class="bg-gray-100">
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-[#1e3a8a] text-white transform -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:static lg:z-auto">
             <div class="p-6 border-b border-blue-700">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
-                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                            <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                        </div>
+                        <div>
+                            <h2 class="font-bold">Admin Panel</h2>
+                            <p class="text-xs text-blue-200">lapas Medan</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="font-bold">Admin Panel</h2>
-                        <p class="text-xs text-blue-200">lapas Medan</p>
-                    </div>
+                    <button id="closeSidebar" class="lg:hidden text-white hover:text-blue-200">
+                        <i class="fa-solid fa-times text-2xl"></i>
+                    </button>
                 </div>
             </div>
-            <nav class="p-4">
+            <nav class="p-4 overflow-y-auto h-[calc(100vh-120px)]">
                 <ul class="space-y-2">
                     <li>
                         <a href="index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-blue-700 rounded-lg transition">
@@ -62,20 +67,28 @@
             </nav>
         </aside>
 
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden lg:hidden"></div>
+
         <!-- Main Content -->
-        <div class="flex-1 overflow-y-auto">
+        <div class="flex-1 overflow-y-auto w-full">
             <!-- Top Bar -->
-            <header class="bg-white shadow-sm sticky top-0 z-10">
-                <div class="flex items-center justify-between px-8 py-4">
-                    <div>
-                        <h1 class="text-2xl font-bold text-gray-800">Pengguna</h1>
-                        <p class="text-sm text-gray-500 mt-1">Kelola akun admin untuk pengelolaan berita dan approval</p>
+            <header class="bg-white shadow-sm sticky top-0 z-30">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between px-4 md:px-8 py-4 gap-4">
+                    <div class="flex items-center space-x-4">
+                        <button id="openSidebar" class="lg:hidden text-gray-600 hover:text-gray-800">
+                            <i class="fa-solid fa-bars text-2xl"></i>
+                        </button>
+                        <div>
+                            <h1 class="text-xl md:text-2xl font-bold text-gray-800">Pengguna</h1>
+                            <p class="text-xs md:text-sm text-gray-500 mt-1 hidden sm:block">Kelola akun admin untuk pengelolaan berita dan approval</p>
+                        </div>
                     </div>
                     <div class="flex items-center space-x-4">
-                        <button onclick="showAddUserModal()" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+                        <button onclick="showAddUserModal()" class="w-full md:w-auto bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition font-medium text-center">
                             + Tambah Pengguna
                         </button>
-                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                        <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0">
                             A
                         </div>
                     </div>
@@ -83,10 +96,10 @@
             </header>
 
             <!-- Content -->
-            <main class="p-8">
+            <main class="p-4 md:p-8">
                 <!-- Filter Section -->
-                <div class="bg-white rounded-lg shadow p-6 mb-6">
-                    <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-white rounded-lg shadow p-4 md:p-6 mb-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <input type="text" placeholder="Cari nama/email..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                         <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                             <option>Semua Role</option>
@@ -107,7 +120,8 @@
 
                 <!-- Table -->
                 <div class="bg-white rounded-lg shadow overflow-hidden">
-                    <div class="overflow-x-auto">
+                    <!-- Desktop/Tablet Table View -->
+                    <div class="hidden md:block overflow-x-auto">
                         <table class="w-full">
                             <thead class="bg-gray-50">
                                 <tr>
@@ -322,16 +336,157 @@
                         </table>
                     </div>
 
+                    <!-- Mobile Card View -->
+                    <div class="md:hidden divide-y divide-gray-200">
+                        <!-- Card 1 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                                    A
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-800">Ahmad Hidayat</h3>
+                                    <p class="text-sm text-gray-600 break-all">ahmad.hidayat@lapas.go.id</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-blue-900 text-white">Super Admin</span>
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Login: 3 Feb 2026, 09:15</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="showEditUserModal('Ahmad Hidayat', 'ahmad.hidayat@lapas.go.id', 'Super Admin', 'Aktif')" class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 border border-blue-600 rounded">Edit</button>
+                                <button onclick="toggleStatus('Ahmad Hidayat', 'Aktif')" class="text-orange-600 hover:text-orange-800 text-sm font-medium px-3 py-1 border border-orange-600 rounded">Nonaktifkan</button>
+                                <button onclick="confirmDelete('Ahmad Hidayat')" class="text-red-600 hover:text-red-800 text-sm font-medium px-3 py-1 border border-red-600 rounded">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                                    S
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-800">Siti Nurhaliza</h3>
+                                    <p class="text-sm text-gray-600 break-all">siti.nurhaliza@lapas.go.id</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">Editor</span>
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Login: 3 Feb 2026, 08:42</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="showEditUserModal('Siti Nurhaliza', 'siti.nurhaliza@lapas.go.id', 'Editor', 'Aktif')" class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 border border-blue-600 rounded">Edit</button>
+                                <button onclick="toggleStatus('Siti Nurhaliza', 'Aktif')" class="text-orange-600 hover:text-orange-800 text-sm font-medium px-3 py-1 border border-orange-600 rounded">Nonaktifkan</button>
+                                <button onclick="confirmDelete('Siti Nurhaliza')" class="text-red-600 hover:text-red-800 text-sm font-medium px-3 py-1 border border-red-600 rounded">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <div class="w-12 h-12 rounded-full bg-cyan-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                                    B
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-800">Budi Santoso</h3>
+                                    <p class="text-sm text-gray-600 break-all">budi.santoso@lapas.go.id</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-cyan-100 text-cyan-800">Operator</span>
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Login: 2 Feb 2026, 16:20</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="showEditUserModal('Budi Santoso', 'budi.santoso@lapas.go.id', 'Operator', 'Aktif')" class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 border border-blue-600 rounded">Edit</button>
+                                <button onclick="toggleStatus('Budi Santoso', 'Aktif')" class="text-orange-600 hover:text-orange-800 text-sm font-medium px-3 py-1 border border-orange-600 rounded">Nonaktifkan</button>
+                                <button onclick="confirmDelete('Budi Santoso')" class="text-red-600 hover:text-red-800 text-sm font-medium px-3 py-1 border border-red-600 rounded">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                                    R
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-800">Rini Damayanti</h3>
+                                    <p class="text-sm text-gray-600 break-all">rini.damayanti@lapas.go.id</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">Editor</span>
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Login: 1 Feb 2026, 14:35</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="showEditUserModal('Rini Damayanti', 'rini.damayanti@lapas.go.id', 'Editor', 'Aktif')" class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 border border-blue-600 rounded">Edit</button>
+                                <button onclick="toggleStatus('Rini Damayanti', 'Aktif')" class="text-orange-600 hover:text-orange-800 text-sm font-medium px-3 py-1 border border-orange-600 rounded">Nonaktifkan</button>
+                                <button onclick="confirmDelete('Rini Damayanti')" class="text-red-600 hover:text-red-800 text-sm font-medium px-3 py-1 border border-red-600 rounded">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <div class="w-12 h-12 rounded-full bg-cyan-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                                    A
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-800">Andi Wijaya</h3>
+                                    <p class="text-sm text-gray-600 break-all">andi.wijaya@lapas.go.id</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-cyan-100 text-cyan-800">Operator</span>
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-red-100 text-red-800">Nonaktif</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Login: 28 Jan 2026, 11:10</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="showEditUserModal('Andi Wijaya', 'andi.wijaya@lapas.go.id', 'Operator', 'Nonaktif')" class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 border border-blue-600 rounded">Edit</button>
+                                <button onclick="toggleStatus('Andi Wijaya', 'Nonaktif')" class="text-green-600 hover:text-green-800 text-sm font-medium px-3 py-1 border border-green-600 rounded">Aktifkan</button>
+                                <button onclick="confirmDelete('Andi Wijaya')" class="text-red-600 hover:text-red-800 text-sm font-medium px-3 py-1 border border-red-600 rounded">Hapus</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="p-4 hover:bg-gray-50">
+                            <div class="flex items-start space-x-3 mb-3">
+                                <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold flex-shrink-0">
+                                    D
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-bold text-gray-800">Dewi Lestari</h3>
+                                    <p class="text-sm text-gray-600 break-all">dewi.lestari@lapas.go.id</p>
+                                    <div class="flex items-center space-x-2 mt-2">
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-purple-100 text-purple-800">Editor</span>
+                                        <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800">Aktif</span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Login: 30 Jan 2026, 10:05</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="showEditUserModal('Dewi Lestari', 'dewi.lestari@lapas.go.id', 'Editor', 'Aktif')" class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1 border border-blue-600 rounded">Edit</button>
+                                <button onclick="toggleStatus('Dewi Lestari', 'Aktif')" class="text-orange-600 hover:text-orange-800 text-sm font-medium px-3 py-1 border border-orange-600 rounded">Nonaktifkan</button>
+                                <button onclick="confirmDelete('Dewi Lestari')" class="text-red-600 hover:text-red-800 text-sm font-medium px-3 py-1 border border-red-600 rounded">Hapus</button>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Pagination -->
-                    <div class="px-6 py-4 border-t border-gray-200">
-                        <div class="flex items-center justify-between">
+                    <div class="px-4 md:px-6 py-4 border-t border-gray-200">
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
                             <div class="text-sm text-gray-600">
                                 Menampilkan 1 - 6 dari 6 pengguna
                             </div>
                             <div class="flex space-x-2">
-                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed">Previous</button>
-                                <button class="px-4 py-2 rounded bg-blue-600 text-white font-medium">1</button>
-                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed">Next</button>
+                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed text-sm">Previous</button>
+                                <button class="px-4 py-2 rounded bg-blue-600 text-white font-medium text-sm">1</button>
+                                <button class="px-3 py-2 rounded bg-gray-200 text-gray-500 cursor-not-allowed text-sm">Next</button>
                             </div>
                         </div>
                     </div>
@@ -341,8 +496,8 @@
     </div>
 
     <!-- Modal Tambah Pengguna -->
-    <div id="addUserModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 max-w-lg w-full mx-4">
+    <div id="addUserModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg p-6 md:p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto">
             <h3 class="text-xl font-bold text-gray-800 mb-6">Tambah Pengguna</h3>
             
             <div class="space-y-4">
@@ -380,7 +535,7 @@
                 </div>
             </div>
             
-            <div class="flex justify-end space-x-3 mt-6">
+            <div class="flex flex-col sm:flex-row justify-end gap-3 mt-6">
                 <button onclick="closeAddUserModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Batal</button>
                 <button onclick="addUser()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Simpan</button>
             </div>
@@ -388,8 +543,8 @@
     </div>
 
     <!-- Modal Edit Pengguna -->
-    <div id="editUserModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 max-w-lg w-full mx-4">
+    <div id="editUserModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg p-6 md:p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto">
             <h3 class="text-xl font-bold text-gray-800 mb-6">Edit Pengguna</h3>
             
             <div class="space-y-4">
@@ -426,7 +581,7 @@
                 </div>
             </div>
             
-            <div class="flex justify-end space-x-3 mt-6">
+            <div class="flex flex-col sm:flex-row justify-end gap-3 mt-6">
                 <button onclick="closeEditUserModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Batal</button>
                 <button onclick="updateUser()" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Update</button>
             </div>
@@ -434,11 +589,11 @@
     </div>
 
     <!-- Modal Konfirmasi Hapus -->
-    <div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-lg p-8 max-w-md mx-4">
+    <div id="deleteModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-lg p-6 md:p-8 max-w-md w-full">
             <h3 class="text-xl font-bold text-gray-800 mb-4">Konfirmasi Hapus</h3>
             <p class="text-gray-600 mb-6">Yakin ingin menghapus pengguna "<span id="deleteUserName" class="font-medium"></span>"?</p>
-            <div class="flex justify-end space-x-3">
+            <div class="flex flex-col sm:flex-row justify-end gap-3">
                 <button onclick="closeDeleteModal()" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Batal</button>
                 <button onclick="deleteUser()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700">Hapus</button>
             </div>
@@ -454,12 +609,43 @@
     </div>
 
     <script>
+        // Sidebar Toggle
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('overlay');
+        const openSidebar = document.getElementById('openSidebar');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        function showSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        openSidebar.addEventListener('click', showSidebar);
+        closeSidebar.addEventListener('click', hideSidebar);
+        overlay.addEventListener('click', hideSidebar);
+
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 1024) {
+                hideSidebar();
+            }
+        });
+
+        // User Management Functions
         function showAddUserModal() {
             document.getElementById('addUserModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeAddUserModal() {
             document.getElementById('addUserModal').classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
         function addUser() {
@@ -473,10 +659,12 @@
             document.getElementById('editRole').value = role;
             document.getElementById('editStatus').value = status;
             document.getElementById('editUserModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeEditUserModal() {
             document.getElementById('editUserModal').classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
         function updateUser() {
@@ -487,10 +675,12 @@
         function confirmDelete(userName) {
             document.getElementById('deleteUserName').textContent = userName;
             document.getElementById('deleteModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeDeleteModal() {
             document.getElementById('deleteModal').classList.add('hidden');
+            document.body.style.overflow = '';
         }
 
         function deleteUser() {
