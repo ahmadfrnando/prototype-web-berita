@@ -9,21 +9,35 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
+        #sidebarOverlay {
+            transition: opacity 0.3s ease;
+        }
+        #sidebar {
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
     <div class="flex h-screen overflow-hidden">
+        <!-- Overlay -->
+        <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden lg:hidden"></div>
+
         <!-- Sidebar -->
-        <aside class="w-64 bg-[#1e3a8a] text-white flex-shrink-0">
+        <aside id="sidebar" class="fixed lg:static w-64 bg-[#1e3a8a] text-white flex-shrink-0 h-full z-40 transform -translate-x-full lg:translate-x-0">
             <div class="p-6 border-b border-blue-700">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
-                        <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-white rounded flex items-center justify-center">
+                            <span class="text-[#1e3a8a] font-bold text-xl">LP</span>
+                        </div>
+                        <div>
+                            <h2 class="font-bold">Admin Panel</h2>
+                            <p class="text-xs text-blue-200">lapas Medan</p>
+                        </div>
                     </div>
-                    <div>
-                        <h2 class="font-bold">Admin Panel</h2>
-                        <p class="text-xs text-blue-200">lapas Medan</p>
-                    </div>
+                    <button id="closeSidebar" class="lg:hidden text-white">
+                        <i class="fa-solid fa-times text-xl"></i>
+                    </button>
                 </div>
             </div>
             <nav class="p-4">
@@ -53,7 +67,7 @@
                         </a>
                     </li>
                     <li class="pt-4 mt-4 border-t border-blue-700">
-                        <a href="../index.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
+                        <a href="../login.html" class="flex items-center space-x-3 px-4 py-3 hover:bg-red-600 rounded-lg transition">
                             <span><i class="fa-solid fa-right-from-bracket"></i></span>
                             <span>Logout</span>
                         </a>
@@ -65,11 +79,16 @@
         <!-- Main Content -->
         <div class="flex-1 overflow-y-auto">
             <!-- Top Bar -->
-            <header class="bg-white shadow-sm sticky top-0 z-10">
-                <div class="flex items-center justify-between px-8 py-4">
-                    <div>
-                        <a href="news.html" class="text-blue-600 hover:text-blue-800 text-sm">← Kembali</a>
-                        <h1 class="text-2xl font-bold text-gray-800 mt-1">Edit Berita</h1>
+            <header class="bg-white shadow-sm sticky top-0 z-20">
+                <div class="flex items-center justify-between px-4 lg:px-8 py-4">
+                    <div class="flex items-center space-x-4">
+                        <button id="hamburger" class="lg:hidden text-gray-700">
+                            <i class="fa-solid fa-bars text-xl"></i>
+                        </button>
+                        <div>
+                            <a href="news.html" class="text-blue-600 hover:text-blue-800 text-sm">← Kembali</a>
+                            <h1 class="text-xl lg:text-2xl font-bold text-gray-800 mt-1">Edit Berita</h1>
+                        </div>
                     </div>
                     <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                         A
@@ -78,17 +97,17 @@
             </header>
 
             <!-- Form Content -->
-            <main class="p-8">
+            <main class="p-4 lg:p-8">
                 <form onsubmit="handleUpdate(event)" class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-lg shadow p-8 space-y-6">
+                    <div class="bg-white rounded-lg shadow p-4 lg:p-8 space-y-6">
                         <!-- Status Badge -->
-                        <div class="flex items-center justify-between pb-4 border-b">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-4 border-b space-y-3 sm:space-y-0">
                             <div>
                                 <span class="inline-flex px-3 py-1 text-sm font-medium rounded-full bg-green-100 text-green-800">
                                     Published
                                 </span>
                             </div>
-                            <div class="text-sm text-gray-600">
+                            <div class="text-xs sm:text-sm text-gray-600">
                                 <p>Dibuat: 15 Des 2025 oleh Admin</p>
                                 <p>Terakhir diubah: 15 Des 2025, 10:30 WIB</p>
                             </div>
@@ -119,7 +138,7 @@
                         </div>
 
                         <!-- Kategori & Tag -->
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-2">Kategori <span class="text-red-500">*</span></label>
                                 <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -145,19 +164,19 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Gambar Cover Saat Ini</label>
                             <div class="mb-4">
-                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="Current Cover" class="max-h-48 rounded-lg">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80" alt="Current Cover" class="w-full max-h-48 lg:max-h-60 object-cover rounded-lg">
                             </div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Upload Gambar Baru (Opsional)</label>
-                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition cursor-pointer">
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 lg:p-8 text-center hover:border-blue-500 transition cursor-pointer">
                                 <input type="file" id="imageUpload" accept="image/*" class="hidden" onchange="previewImage(event)">
                                 <label for="imageUpload" class="cursor-pointer">
                                     <div id="uploadPlaceholder">
-                                        <div class="text-6xl mb-3"><i class="fa-solid fa-camera"></i></div>
+                                        <div class="text-4xl lg:text-6xl mb-3"><i class="fa-solid fa-camera"></i></div>
                                         <p class="text-gray-600 font-medium mb-1">Klik untuk upload gambar baru</p>
                                         <p class="text-sm text-gray-500">PNG, JPG, JPEG (max 2MB)</p>
                                     </div>
                                     <div id="imagePreview" class="hidden">
-                                        <img id="previewImg" class="max-h-64 mx-auto rounded-lg" alt="Preview">
+                                        <img id="previewImg" class="w-full max-h-48 lg:max-h-64 mx-auto object-cover rounded-lg" alt="Preview">
                                         <button type="button" onclick="removeImage()" class="mt-3 text-red-600 hover:text-red-800 text-sm">Hapus Gambar Baru</button>
                                     </div>
                                 </label>
@@ -180,9 +199,9 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">Konten Berita <span class="text-red-500">*</span></label>
                             <textarea 
                                 id="kontenBerita"
-                                rows="15"
+                                rows="10"
                                 required
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm min-h-[220px]"
                             >Medan - WaliKota Medan secara resmi meluncurkan aplikasi layanan publik terintegrasi yang mengintegrasikan 27 jenis layanan administrasi pemerintahan dalam satu platform digital.
 
 Aplikasi bernama "Medan Smart Service" ini dirancang untuk memudahkan warga Kota Medan dalam mengakses berbagai layanan pemerintah tanpa harus datang langsung ke kantor dinas terkait.
@@ -197,21 +216,21 @@ Kepala Lembaga Permasyarakatan , Budi Santoso, menyatakan aplikasi ini merupakan
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex items-center justify-between pt-6 border-t">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between pt-6 border-t space-y-3 sm:space-y-0">
                             <button 
                                 type="button"
-                                onclick="confirmUnpublish()"
-                                class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
+                                onclick="openUnpublishModal()"
+                                class="w-full sm:w-auto px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
                             >
                                 <i class="fa-solid fa-circle-xmark"></i> Unpublish
                             </button>
-                            <div class="flex space-x-4">
-                                <a href="news.html" class="px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium">
+                            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                                <a href="news.html" class="w-full sm:w-auto px-6 py-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium text-center">
                                     Batal
                                 </a>
                                 <button 
                                     type="submit"
-                                    class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                                    class="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
                                 >
                                     <i class="fa-solid fa-floppy-disk"></i> Update Berita
                                 </button>
@@ -223,8 +242,35 @@ Kepala Lembaga Permasyarakatan , Budi Santoso, menyatakan aplikasi ini merupakan
         </div>
     </div>
 
+    <!-- Unpublish Confirmation Modal -->
+    <div id="unpublishModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+            <div class="mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fa-solid fa-exclamation-triangle text-red-600 text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-800 text-center mb-2">Konfirmasi Unpublish</h3>
+                <p class="text-gray-600 text-center text-sm">Apakah Anda yakin ingin unpublish berita ini? Berita tidak akan terlihat di website publik.</p>
+            </div>
+            <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+                <button 
+                    onclick="closeUnpublishModal()"
+                    class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition font-medium"
+                >
+                    Batal
+                </button>
+                <button 
+                    onclick="confirmUnpublish()"
+                    class="w-full sm:w-1/2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-medium"
+                >
+                    Ya, Unpublish
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notification -->
-    <div id="toast" class="hidden fixed top-6 right-6 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50">
+    <div id="toast" class="hidden fixed top-6 right-4 lg:right-6 bg-green-500 text-white px-4 lg:px-6 py-4 rounded-lg shadow-lg z-50 max-w-sm">
         <div class="flex items-center space-x-3">
             <span class="text-2xl">✓</span>
             <div>
@@ -235,6 +281,26 @@ Kepala Lembaga Permasyarakatan , Budi Santoso, menyatakan aplikasi ini merupakan
     </div>
 
     <script>
+        // Sidebar toggle
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const hamburger = document.getElementById('hamburger');
+        const closeSidebar = document.getElementById('closeSidebar');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+        }
+
+        function closeSidebarFunc() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+        }
+
+        hamburger.addEventListener('click', openSidebar);
+        closeSidebar.addEventListener('click', closeSidebarFunc);
+        overlay.addEventListener('click', closeSidebarFunc);
+
         // Auto-generate slug from title
         document.getElementById('judulBerita').addEventListener('input', function(e) {
             const title = e.target.value;
@@ -276,14 +342,21 @@ Kepala Lembaga Permasyarakatan , Budi Santoso, menyatakan aplikasi ini merupakan
             }, 1500);
         }
 
-        // Unpublish
+        // Unpublish modal
+        function openUnpublishModal() {
+            document.getElementById('unpublishModal').classList.remove('hidden');
+        }
+
+        function closeUnpublishModal() {
+            document.getElementById('unpublishModal').classList.add('hidden');
+        }
+
         function confirmUnpublish() {
-            if (confirm('Apakah Anda yakin ingin unpublish berita ini?')) {
-                showToast('Berhasil!', 'Berita berhasil di-unpublish');
-                setTimeout(() => {
-                    window.location.href = 'news.html';
-                }, 1500);
-            }
+            closeUnpublishModal();
+            showToast('Berhasil!', 'Berita berhasil di-unpublish');
+            setTimeout(() => {
+                window.location.href = 'news.html';
+            }, 1500);
         }
 
         // Show toast
